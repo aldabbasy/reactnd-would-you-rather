@@ -1,12 +1,30 @@
-import React from 'react'
-import './App.css'
+import React, { useEffect, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { handleInitialDataOnLogin } from '../Actions/shared'
+import LoadingBar from 'react-redux-loading'
 
-export default function App() {
+function App({dispatch, loading}) {
+
+  useEffect(() => {
+    dispatch(handleInitialData())
+  }, []);
+
   return (
-    <div className="App">
-      
-    </div>
+    <Fragment>
+      <LoadingBar />
+        {loading === true ? null : 
+          <div>
+
+          </div>
+        }
+    </Fragment>
   )
 }
 
-export default App
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect()(App)
