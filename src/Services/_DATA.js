@@ -1,7 +1,3 @@
-import yasmeena from '../Assets/avatars/yasmeena.svg'
-import aldabbasy from '../Assets/avatars/aldabbasy.svg'
-import allaith from '../Assets/avatars/allaith.svg'
-
 let users = {
     sarahedo: {
       id: 'sarahedo',
