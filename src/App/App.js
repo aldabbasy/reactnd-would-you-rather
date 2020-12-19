@@ -1,13 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 
 import Routes from '../Components/Routes'
+import { handleInitialData } from '../Actions/shared'
 
 function App({dispatch, isLogged}) {
 
-  
+  useEffect(() => {
+    dispatch(handleInitialData())
+  }, []);
 
   return (
     <Fragment>
