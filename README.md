@@ -1,4 +1,4 @@
-# Tweet Project
+# would you rather Project
 A simple would you rather game that allows you to:
 * to ask a two options questions
 * answer others questions
