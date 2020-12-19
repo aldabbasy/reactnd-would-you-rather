@@ -1,9 +1,11 @@
 import React, { useEffect, Fragment } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { connect } from 'react-redux'
-import { handleInitialDataOnLogin } from '../Actions/shared'
-import LoadingBar from 'react-redux-loading'
+import { handleInitialData } from '../Actions/shared'
 
-function App({dispatch, loading}) {
+import Routes from '../Components/Routes'
+
+function App({dispatch, isLogged}) {
 
   useEffect(() => {
     dispatch(handleInitialData())
@@ -11,20 +13,17 @@ function App({dispatch, loading}) {
 
   return (
     <Fragment>
-      <LoadingBar />
-        {loading === true ? null : 
-          <div>
-
-          </div>
-        }
+      <CssBaseline />
+      <Routes isLogged={isLogged}/>
     </Fragment>
   )
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    isLogged: authedUser !== null
   }
 }
 
-export default connect()(App)
+
+export default connect(mapStateToProps)(App)
