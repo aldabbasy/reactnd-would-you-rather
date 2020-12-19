@@ -1,8 +1,12 @@
+import yasmeena from '../Assets/avatars/yasmeena.svg'
+import aldabbasy from '../Assets/avatars/aldabbasy.svg'
+import allaith from '../Assets/avatars/allaith.svg'
+
 let users = {
     sarahedo: {
       id: 'sarahedo',
       name: 'Yasmeena',
-      avatarURL: 'src/Assets/avatars/yasmeena.svg',
+      avatarURL: '/static/media/yasmeena.a8402c90.svg',
       answers: {
         "8xf0y6ziyjabvozdd253nd": 'optionOne',
         "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +18,7 @@ let users = {
     tylermcginnis: {
       id: 'tylermcginnis',
       name: 'Allaith',
-      avatarURL: 'src/Assets/avatars/allaith.svg',
+      avatarURL: '/static/media/allaith.d791346b.svg',
       answers: {
         "vthrdm985a262al8qx3do": 'optionOne',
         "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -23,8 +27,8 @@ let users = {
     },
     johndoe: {
       id: 'johndoe',
-      name: 'Aldabbasy',
-      avatarURL: 'src/Assets/avatars/aldabbasy.svg',
+      name: 'aldabbasy',
+      avatarURL: '/static/media/aldabbasy.f45155b1.svg',
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
         "vthrdm985a262al8qx3do": 'optionTwo',

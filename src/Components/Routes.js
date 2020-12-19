@@ -1,6 +1,7 @@
   
 import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
+import Container from '@material-ui/core/Container'
 
 import HomePage from '../Screens/HomePage'
 import Login from '../Screens/Login'
@@ -12,13 +13,15 @@ function Routes({ isLogged }) {
       {
         !isLogged ? <Route path='/' exact component={Login}/> :
           <Fragment>
-            <Route path='/' exact component={HomePage} />
-            <Route exact path='/logout' component={Logout} />
+            <Container component="main" maxWidth="xl">
+              <Route path='/' exact component={HomePage} />
+              <Route exact path='/logout' component={Logout} />
+            </Container>
           </Fragment>
       }
       {/* <Route component={NotFound} /> */}
     </Switch>
-  </div>;
+  </div>
 }
 
 export default Routes;

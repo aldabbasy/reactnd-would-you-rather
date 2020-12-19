@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom';
 
 import QuestionsList from '../Components/QuestionsList'

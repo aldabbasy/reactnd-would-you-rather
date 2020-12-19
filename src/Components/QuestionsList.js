@@ -1,22 +1,66 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import { connect } from 'react-redux'
 
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+
+import Question from "./Question";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
+    tabs: {
+        color: '#40a9ff',
+    },
+    list: {
+    }
+}))
+
 function QuestionsList({ unansweredQuestions, answeredQuestions }) {
+
+    const [activeTab, setActiveTab] = useState(0)
+    const classes = useStyles()
+
+    const handleTabChange = (e, newValue) => {
+        setActiveTab(newValue);
+      }
+
     return (
-        <div>
-            <p>answered Questions</p>
-            <ul>
-                {answeredQuestions.map((qid) => (
-                    <li key={qid}>{qid}</li>
-                ))}
-            </ul>
-            <p>unanswered Questions</p>
-            <ul>
-                {unansweredQuestions.map((qid) => (
-                    <li key={qid}>{qid}</li>
-                ))}
-            </ul>
-        </div>
+        <Paper className={classes.root}>
+            <Tabs className={classes.tabs}
+                value={activeTab}
+                onChange={handleTabChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+            >
+                <Tab label="Answered Questions" />
+                <Tab label="Unanswered Questions" />
+            </Tabs>
+            <List className={classes.list}>
+                {activeTab === 0 ? (
+                    answeredQuestions.map((qid) => (
+                        <Fragment key={qid}>
+                            <Question qid={qid} />
+                            <Divider variant="inset" component="li" />
+                        </Fragment>
+                    ))
+                ):(
+                    unansweredQuestions.map((qid) => (
+                        <Fragment key={qid}>
+                            <Question qid={qid} />
+                            <Divider variant="inset" component="li" />
+                        </Fragment>
+                    ))
+                )}
+            </List>
+        </Paper>
     )
 }
 
