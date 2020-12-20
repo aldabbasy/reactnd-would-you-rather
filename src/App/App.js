@@ -5,10 +5,14 @@ import LoadingBar from 'react-redux-loading'
 
 import Routes from '../Components/Routes'
 import { handleInitialData } from '../Actions/shared'
+import { setAuthedUser } from '../Actions/authedUsers'
 
 function App({dispatch, isLogged}) {
 
   useEffect(() => {
+    if(localStorage.loggedUser && !isLogged) {
+      dispatch(setAuthedUser(localStorage.loggedUser))
+    }
     dispatch(handleInitialData())
   }, []);
 

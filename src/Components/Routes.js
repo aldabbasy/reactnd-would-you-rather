@@ -14,18 +14,15 @@ import NotFound from "../Screens/NotFound"
 function Routes({ isLogged }) {
   return (
     <div className="container">
+      {isLogged && <NavBar />}
       <Switch>
         {
-          !isLogged ? <Route path='/' exact component={Login}/> :
-            <Fragment>
-              <NavBar />
-              <Route path='/' exact component={HomePage} />
-              <Route exact path='/leaderboard' component={Leaderboard} />
-              <Route exact path='/add' component={NewQuestion} />
-              <Route exact path='/question/:id' component={Poll} />
-              <Route exact path='/logout' component={Logout} />
-            </Fragment>
+          !isLogged ? <Route exact path='/' render={() => (<Login />)} /> : <Route exact path='/' render={() => (<HomePage />)} />
         }
+        <Route exact path='/leaderboard' render={() => (<Leaderboard />)} />
+        <Route exact path='/add' render={() => (<NewQuestion />)} />
+        <Route exact path='/question/:id' render={() => (<Poll />)} />
+        <Route exact path='/logout' render={() => (<Logout />)} />
         <Route component={NotFound} />
       </Switch>
     </div>

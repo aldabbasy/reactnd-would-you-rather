@@ -48,7 +48,13 @@ function Login({dispatch}) {
         let _isRegisteredUser = validUsernames.filter((user) => {
             return user === username
         })
-        _isRegisteredUser.length > 0 ? dispatch(setAuthedUser(username)) : setErrorMessage('invalid username')
+        if(_isRegisteredUser.length > 0) {
+            dispatch(setAuthedUser(username))
+            localStorage.loggedUser = username
+        }
+        else {
+            setErrorMessage('invalid username')
+        } 
     }
 
     return (

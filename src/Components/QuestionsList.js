@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function QuestionsList({ unansweredQuestions, answeredQuestions }) {
+function QuestionsList({ user, unansweredQuestions, answeredQuestions }) {
 
     const [activeTab, setActiveTab] = useState(0)
     const classes = useStyles()
@@ -31,47 +32,61 @@ function QuestionsList({ unansweredQuestions, answeredQuestions }) {
         setActiveTab(newValue);
       }
 
-    return (
-        <Paper className={classes.root}>
-            <Tabs className={classes.tabs}
-                value={activeTab}
-                onChange={handleTabChange}
-                indicatorColor="primary"
-                textColor="primary"
-                centered
-            >
-                <Tab label="Answered Questions" />
-                <Tab label="Unanswered Questions" />
-            </Tabs>
-            <List className={classes.list}>
-                {activeTab === 0 ? (
-                    answeredQuestions.map((qid) => (
-                        <Fragment key={qid}>
-                            <Question qid={qid} />
-                            <Divider variant="inset" component="li" />
-                        </Fragment>
-                    ))
-                ):(
-                    unansweredQuestions.map((qid) => (
-                        <Fragment key={qid}>
-                            <Question qid={qid} />
-                            <Divider variant="inset" component="li" />
-                        </Fragment>
-                    ))
-                )}
-            </List>
-        </Paper>
-    )
+      if(user){
+        return (
+            <Paper className={classes.root}>
+                <Tabs className={classes.tabs}
+                    value={activeTab}
+                    onChange={handleTabChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                >
+                    <Tab label="Answered Questions" />
+                    <Tab label="Unanswered Questions" />
+                </Tabs>
+                <List className={classes.list}>
+                    {activeTab === 0 ? (
+                        answeredQuestions.map((qid) => (
+                            <Fragment key={qid}>
+                                <Question qid={qid} />
+                                <Divider variant="inset" component="li" />
+                            </Fragment>
+                        ))
+                    ):(
+                        unansweredQuestions.map((qid) => (
+                            <Fragment key={qid}>
+                                <Question qid={qid} />
+                                <Divider variant="inset" component="li" />
+                            </Fragment>
+                        ))
+                    )}
+                </List>
+            </Paper>
+        )
+      }
+      else{
+        return (
+            <Redirect to='/logout' />
+        )
+      }
 }
 
 function mapStateToProps ({ questions, users, authedUser }) {
     const user = users[authedUser]
-    const answeredQuestions = Object.keys(user.answers)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-    return {
-      unansweredQuestions : Object.keys(questions).filter(qid => !answeredQuestions.includes(qid))
-        .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
-      answeredQuestions
+    if(user){
+        const answeredQuestions = Object.keys(user.answers)
+        .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+        return {
+            user,
+            unansweredQuestions : Object.keys(questions).filter(qid => !answeredQuestions.includes(qid))
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+            answeredQuestions
+        }
+    }
+    else{
+        return {
+        }
     }
   }
 

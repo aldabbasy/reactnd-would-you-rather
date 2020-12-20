@@ -7,6 +7,7 @@ import { unsetAuthedUser } from '../Actions/authedUsers'
 function Logout({ dispatch }) {
     useEffect(() => {
         dispatch(unsetAuthedUser())
+        localStorage.removeItem("loggedUser")
       }, [])
 
     return (

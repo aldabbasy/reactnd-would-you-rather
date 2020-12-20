@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import NotFound from "../Screens/NotFound"
 
 function Poll({question}) {
     return (
+        question ? (
         <div>
             {question.id}
-        </div>
+        </div>):(
+            <NotFound />
+        )
     )
 }
 
