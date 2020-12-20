@@ -9,6 +9,7 @@ import NavBar from "./NavBar"
 import Leaderboard from "./Leaderboard"
 import NewQuestion from "./NewQuestion"
 import Poll from "./Poll"
+import NotFound from "./NotFound"
 
 function Routes({ isLogged }) {
   return <div className="container">
@@ -24,7 +25,7 @@ function Routes({ isLogged }) {
             <Route exact path='/logout' component={Logout} />
           </Fragment>
       }
-      {/* <Route component={NotFound} /> */}
+      <Route component={NotFound} />
     </Switch>
   </div>
 }
