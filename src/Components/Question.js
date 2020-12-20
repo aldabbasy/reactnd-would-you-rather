@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +25,7 @@ function Question({ question, author }) {
     return (
         <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src={author.avatarURL} />
+          <Avatar alt={author.name} src={author.avatarURL} />
         </ListItemAvatar>
         <ListItemText
           primary={author.name + " asks: Would You Rather?"}
@@ -40,9 +41,11 @@ function Question({ question, author }) {
           }
         />
         <ListItemSecondaryAction>
+          <Link to={`/question/${question.id}`} style={{ textDecoration: 'none', color:'white' }} > 
             <Button type="button" color="primary">
-                View Poll
+              View Poll
             </Button>
+          </Link>
         </ListItemSecondaryAction>
       </ListItem>
     )
