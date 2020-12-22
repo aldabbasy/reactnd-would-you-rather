@@ -10,8 +10,9 @@ import { setAuthedUser } from '../Actions/authedUsers'
 function App({dispatch, isLogged}) {
   
   useEffect(() => {
-    if(localStorage.loggedUser && !isLogged) {
-      dispatch(setAuthedUser(localStorage.loggedUser))
+    const _user = sessionStorage.getItem('loggedUser')
+    if(_user) {
+      dispatch(setAuthedUser(_user))
     }
     dispatch(handleInitialData())
   }, [])

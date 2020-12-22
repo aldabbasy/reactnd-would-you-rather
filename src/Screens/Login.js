@@ -50,7 +50,7 @@ function Login({dispatch}) {
         })
         if(_isRegisteredUser.length > 0) {
             dispatch(setAuthedUser(username))
-            localStorage.loggedUser = username
+            sessionStorage.setItem('loggedUser', username)
         }
         else {
             setErrorMessage('invalid username')

@@ -6,10 +6,10 @@ import HomePage from '../Screens/HomePage'
 import Login from '../Screens/Login'
 import Logout from './Logout'
 import NavBar from "./NavBar"
-import Leaderboard from "./Leaderboard"
 import NewQuestion from "./NewQuestion"
 import Poll from "./Poll"
 import NotFound from "../Screens/NotFound"
+import Leaderboard from "../Screens/Leaderboard"
 
 function Routes({ isLogged }) {
   return (
@@ -21,7 +21,7 @@ function Routes({ isLogged }) {
         }
         <Route exact path='/leaderboard' render={() => (<Leaderboard />)} />
         <Route exact path='/add' render={() => (<NewQuestion />)} />
-        <Route exact path='/question/:id' render={() => (<Poll />)} />
+        <Route exact path='/question/:id' render={props => (<Poll {...props} key={ props.location.key }/>)} />
         <Route exact path='/logout' render={() => (<Logout />)} />
         <Route component={NotFound} />
       </Switch>

@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiCardHeader-root{
+  background-color: #d81b60;
+  color: white;
+}
+
+li.MuiCardHeader-root  {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.MuiCardHeader-avatar .MuiAvatar-circle{
+  color: #949494;
+  background-color: #ffffff;
+}
