@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 function Login({dispatch}) {
 
     const [username, setUsername] = useState('')
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
     const classes = useStyles()
     const validUsernames = ['sarahedo', 'tylermcginnis', 'johndoe']
     const handleSubmit = (e) => {
