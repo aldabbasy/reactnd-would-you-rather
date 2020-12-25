@@ -34,7 +34,7 @@ function QuestionsList({ user, unansweredQuestions, answeredQuestions }) {
 
       if(user){
         return (
-            <Paper className={classes.root}>
+            <Fragment>
                 <Tabs className={classes.tabs}
                     value={activeTab}
                     onChange={handleTabChange}
@@ -62,7 +62,7 @@ function QuestionsList({ user, unansweredQuestions, answeredQuestions }) {
                         ))
                     )}
                 </List>
-            </Paper>
+            </Fragment>
         )
       }
       else{
