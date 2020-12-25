@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from "react-redux"
 import User from '../Components/User'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 

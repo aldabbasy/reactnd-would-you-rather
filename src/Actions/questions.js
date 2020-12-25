@@ -11,7 +11,7 @@ export function recieveQuestions (questions) {
 
 export function answerQuestion(authedUser, qid, answer) {
     return {
-      type: ADD_QUESTION,
+      type: ANSWER_QUESTION,
       authedUser,
       qid,
       answer

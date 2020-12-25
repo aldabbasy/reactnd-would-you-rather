@@ -82,7 +82,7 @@ function Login({dispatch}) {
                         error={errorMessage !== ''}
                         helperText={errorMessage}
                     />
-                    <Button className={classes.submit} type="submit" fullWidth variant="contained" color="primary">
+                    <Button className={classes.submit} type="submit" disabled={username === ''} fullWidth variant="contained" color="primary">
                         Log in
                     </Button>
                 </form>

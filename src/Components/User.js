@@ -53,13 +53,11 @@ function User({ user }) {
                     <Typography variant="body2" color="textSecondary" component="p">
                         Number of Answers: { Object.keys(user.answers).length }
                     </Typography>
+                    <div className="progress">
+                        <div className="progress-optionOne" style={{ width: '100%' }}>{"Score: " + Object.keys(user.answers).length + user.questions.length}</div>
+                    </div>
                 </CardContent>
             </Card>
-        <Card className={classes.score}>
-            <CardHeader component="li"
-                title= {"Score: " + Object.keys(user.answers).length + user.questions.length} 
-            />
-        </Card>
     </Fragment>
     )
 }

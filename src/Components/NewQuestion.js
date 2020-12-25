@@ -106,7 +106,7 @@ function NewQuestion({ dispatch }) {
                         error={errorMessageTwo !== ''}
                         helperText={errorMessageTwo}
                     />
-                    <Button className={classes.submit} type="submit" fullWidth variant="contained" color="primary">
+                    <Button className={classes.submit} type="submit" disabled={optionTwo === '' || optionOne === ''} fullWidth variant="contained" color="primary">
                         Submit
                     </Button>
                 </form>
