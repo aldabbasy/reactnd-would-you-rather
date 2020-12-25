@@ -112,21 +112,28 @@ function Poll({ dispatch, question, questionAuthor, answer, total, percOne, perc
 }
 
 function calculatePerc(x) {
-    return Number.parseFloat(x).toFixed(2);
+    return Number.parseFloat(x).toFixed(2)
 }
   
 function mapStateToProps ({ questions, users, authedUser }, { match }) {
-    const answers = users[authedUser].answers;
-    let answer, percOne, percTwo, total;
-    const { id } = match.params;
-    const question = questions[id];
+    const { id } = match.params
+    const question = questions[id]
+    if(!question)
+    {
+        return {
+            
+        }
+    }
+    const answers = users[authedUser].answers
+    let answer, percOne, percTwo, total
+    
     if (answers.hasOwnProperty(question.id)) {
         answer = answers[question.id]
     }
-    const questionAuthor = users[question.author];
-    total = question.optionOne.votes.length + question.optionTwo.votes.length;
-    percOne = calculatePerc((question.optionOne.votes.length / total) * 100);
-    percTwo = calculatePerc((question.optionTwo.votes.length / total) * 100);
+    const questionAuthor = users[question.author]
+    total = question.optionOne.votes.length + question.optionTwo.votes.length
+    percOne = calculatePerc((question.optionOne.votes.length / total) * 100)
+    percTwo = calculatePerc((question.optionTwo.votes.length / total) * 100)
     return {
         question,
         questionAuthor,
