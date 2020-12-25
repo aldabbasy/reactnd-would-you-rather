@@ -12,6 +12,13 @@ To get started right away:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
+### Valid Usernames:
+
+* sarahedo
+* tylermcginnis
+* johndoe
+
+
 ## Topics Covered in This Project:
 
 * Functional React Components
